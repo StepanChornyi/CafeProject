@@ -15,45 +15,23 @@
 <body>
 	<div class="container">
 		<h2>Profile</h2>
-		<a href="/cafe">Cafe</a>
-		<a href="/meal">Meal</a>
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<table class="table table-bordered">
-							<tr>
-								<td>${user.email}</td>
-								<td>${user.role}</td>
-							</tr>
-					</table>
-				</div>
-			</div>
-		</div>
+		<a href="/cafe" class="btn btn-outline-success">Add cafe</a> 
+		<a href="/meal" class="btn btn-outline-success">Add meal</a>
 		<div class="row">
 			<div class="col-12">
 				<table class="table table-bordered">
 					<tr>
 						<th class="text-center">Name</th>
-						<th class="text-center">Address</th>
-						<th class="text-center">Full description</th>
-						<th class="text-center">Short description</th>
 						<th class="text-center">Type</th>
 						<th class="text-center">Phone</th>
-						<th class="text-center">Open</th>
-						<th class="text-center">Close</th>
 						<th class="text-center">Table</th>
 					</tr>
 					<c:forEach var="cafe" items="${cafes}">
-						<tr>
+						<tr >
 							<td><a href="/cafedesc/${cafe.id}">${cafe.name}</a></td>
-							<td>${cafe.address}</td>
-							<td>${cafe.fullDescription}</td>
-							<td>${cafe.shortDescription}</td>
 							<td>${cafe.type}</td>
 							<td>${cafe.phone}</td>
-							<td>${cafe.open}</td>
-							<td>${cafe.close}</td>
-							<td><a href="/profile/cafe/addtable/${cafe.id}" class="btn btn-outline-danger btn-sm">Tables</a></td>
+							<td  class="text-center"><a href="/profile/cafe/addtable/${cafe.id}" class="btn btn-outline-danger btn-sm">Tables</a></td>
 						</tr>
 					</c:forEach>
 				</table>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -13,53 +14,59 @@
 	crossorigin="anonymous">
 <title>Cafe</title>
 <style>
-.one{
-border:2px solid black;
-border-radius:8px;
-border-spacing:10;
-padding:4px;
-margin:1px;
+.one {
+	border: 2px solid black;
+	border-radius: 8px;
+	border-spacing: 10;
+	padding: 4px;
+	margin: 1px;
 }
 </style>
 </head>
 <body>
-	<h2>${message}</h2>
-	<sec:authorize access="hasRole('ROLE_ADMIN')">
+	<div class="container">
 		<div class="row">
-		<form:form action="/logout">
-			<button>Logout</button>
-		</form:form>
-		<a href="/admin">Admin</a>
-		<a href="/profile">Profile</a>
-		</div>
-		
-	</sec:authorize>
-	<sec:authorize access="isAnonymous()">
-		<a href="/registration">Registration</a>
-		<a href="/login">Login</a>
-	</sec:authorize>
-	<sec:authorize access="hasRole('ROLE_CAFE')">
-	<div class="container">		
-		<div class="row">
-		<form:form action="/logout">
-			<button>Logout</button>
-		</form:form>
-		<button ><a href="/profile">Profile</a></button>
-		</div>
-		</div>
-	</sec:authorize>	
-		<div class="container">		
-			<div class="row">
-			<c:forEach var="cafe" items="${cafes}">
-				<div class="col-3 one">
-					<h3><a href="/cafedesc/${cafe.id}">${cafe.name}</a></h3>
-					<h6>${cafe.address}</h6><h6>${cafe.type}</h6>
-					<p>${cafe.shortDescription}</p>
-				</div>
-				</c:forEach>
+			<div class="col-12 text-right">
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<form:form action="/logout">
+						<a href="/admin" class="btn btn-sm btn-outline-primary">Admin</a>
+						<button class="btn btn-primary btn-sm">Logout</button>
+					</form:form>
+				</sec:authorize>
+
+				<sec:authorize access="isAnonymous()">
+					<a href="/login" class="btn btn-primary btn-sm">Login</a>
+					<a href="/registration" class="btn btn-secondary btn-sm">Registration</a>
+				</sec:authorize>
+
+				<sec:authorize access="hasRole('ROLE_CAFE')">
+					<form:form action="/logout">
+						<a href="/profile" class="btn btn-sm btn-outline-primary">Profile</a>
+						<button class="btn btn-primary btn-sm">Logout</button>
+					</form:form>
+				</sec:authorize>
 			</div>
 		</div>
-	
-	
+		<div class="row">
+			<div class="col-12">
+				<table class="table table-bordered">
+					<tr>
+						<th class="text-center">Name</th>
+						<th class="text-center">Type</th>
+						<th class="text-center">Rate</th>
+					</tr>
+					<c:forEach var="cafe" items="${cafes}">
+						<tr>
+							<td><a href="/cafedesc/${cafe.id}">${cafe.name}</a></td>
+							<td>${cafe.type}</td>
+							<td>${cafe.rate}</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
 </body>
 </html>

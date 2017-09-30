@@ -28,7 +28,6 @@ private final CafeService service;
 	@GetMapping
 	public String show(Model model,Principal principal) {
 		model.addAttribute("cafes",service.findAllCafeByUserEmail(principal.getName()));
-		model.addAttribute("user", service.findOneUserByEmail(principal.getName()));
 		return "profile";
 	}
 	
