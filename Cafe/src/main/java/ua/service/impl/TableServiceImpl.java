@@ -42,6 +42,7 @@ public class TableServiceImpl implements TableService {
     Table table = new Table();
     table.setId(request.getId());
     table.setCountOfPeople(request.getCountOfPeople());
+    table.setTableNumber(request.getTableNumber());
     table.setUser(request.getUser());
     table.setUserPhone(request.getUserPhone());
     table.setIsFree(request.getIsFree());
@@ -60,6 +61,7 @@ public class TableServiceImpl implements TableService {
     TableRequest request = new TableRequest();
     request.setId(table.getId());
     request.setCountOfPeople(Integer.valueOf(table.getCountOfPeople()));
+    request.setTableNumber(Integer.valueOf(table.getTableNumber()));
     request.setUser(table.getUser());
     request.setUserPhone(table.getUserPhone());
     request.setIsFree(table.getIsFree());

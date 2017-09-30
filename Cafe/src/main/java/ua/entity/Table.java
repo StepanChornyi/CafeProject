@@ -10,14 +10,14 @@ import javax.persistence.ManyToOne;
 @javax.persistence.Table(name="_table")
 public class Table extends AbstractEntity{
 	
-	
 	private String user;
-	
 	
 	@Column(length=15)
 	private String userPhone;
 
 	private int countOfPeople;
+	
+	private int tableNumber;
 	
 	private boolean isFree;
 	
@@ -66,6 +66,15 @@ public class Table extends AbstractEntity{
 		this.userPhone = userPhone;
 	}
 
+	public int getTableNumber() {
+		return tableNumber;
+	}
+
+	public void setTableNumber(int tableNumber) {
+		this.tableNumber = tableNumber;
+	}
+
+	
 
 	
 }

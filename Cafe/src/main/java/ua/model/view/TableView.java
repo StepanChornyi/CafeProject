@@ -7,6 +7,8 @@ public class TableView {
 	
 	private int countOfPeople;
 	
+	private int tableNumber;
+	
 	private boolean isFree;
 	
 	private String user;
@@ -16,13 +18,14 @@ public class TableView {
 	private String cafe;
 	
 
-	public TableView(Integer id,  int countOfPeople, boolean isFree, String user, String userPhone, String cafe) {
+	public TableView(Integer id,  int countOfPeople, int tableNumber, boolean isFree, String user, String userPhone, String cafe) {
 		this.id = id;
 		this.countOfPeople = countOfPeople;
 		this.isFree = isFree;
 		this.user = user;
 		this.userPhone = userPhone;
 		this.cafe = cafe;
+		this.tableNumber = tableNumber;
 	}
 
 
@@ -85,10 +88,16 @@ public class TableView {
 		this.cafe = cafe;
 	}
 
-	
 
-	
-	
+	public int getTableNumber() {
+		return tableNumber;
+	}
+
+
+	public void setTableNumber(int tableNumber) {
+		this.tableNumber = tableNumber;
+	}
+
 	
 	
 }

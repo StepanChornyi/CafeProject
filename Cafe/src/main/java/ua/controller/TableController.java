@@ -31,57 +31,59 @@ public class TableController {
     return new TableRequest();
   }
   
-  @GetMapping("/addtable/{id}")
-  public String show(Model model, @PathVariable Integer id) {
-    model.addAttribute("tables", service.findTableViewsByCafeId(id));
-    model.addAttribute("cafeId", id);
+  @GetMapping("/addtable/{cafeId}")
+  public String show(Model model, @PathVariable Integer cafeId) {
+    model.addAttribute("tables", service.findTableViewsByCafeId(cafeId));
+    model.addAttribute("cafeId", cafeId);
     return "addtable";
   }
   
   
-  @GetMapping("/addtable/{id}/delete/{tableId}")
-  public String delete(@PathVariable Integer id,@PathVariable Integer tableId) {
+  @GetMapping("/addtable/{cafeId}/delete/{tableId}")
+  public String delete(@PathVariable Integer cafeId,@PathVariable Integer tableId) {
     service.delete(tableId);
-    return "redirect:/profile/cafe/addtable/{id}";
+    return "redirect:/profile/cafe/addtable/{cafeId}";
   }
   
-  @PostMapping("/addtable/{id}")
-  public String save(@ModelAttribute("_table") TableRequest request,  SessionStatus status, @PathVariable Integer id) {
-    request.setIsFree(true);
-    request.setCafe(service.findOneCafeById(id));
+  @PostMapping("/addtable/{cafeId}")
+  public String save(@ModelAttribute("_table") TableRequest request,  SessionStatus status, @PathVariable Integer cafeId) {
+    //request.setId(id);
+	request.setIsFree(true);
+    request.setCafe(service.findOneCafeById(cafeId));
     service.save(request);
     return cancel(status);
   }
   
   
-  @GetMapping("/addtable/{id}/update/{tableId}")
-  public String update(@PathVariable Integer id,@PathVariable Integer tableId, Model model) {
+  @GetMapping("/addtable/{cafeId}/update/{tableId}")
+  public String update(@PathVariable Integer cafeId,@PathVariable Integer tableId, Model model) {
     model.addAttribute("_table", service.findOne(tableId));
-    model.addAttribute("tables", service.findTableViewsByCafeId(id));
-    model.addAttribute("cafeId", id);
+    model.addAttribute("tables", service.findTableViewsByCafeId(cafeId));
+    model.addAttribute("cafeId", cafeId);
     return "addtable";
   } 
   
-  @GetMapping("/addtable/{id}/cancel")
+  @GetMapping("/addtable/{cafeId}/cancel")
   public String cancel(SessionStatus status) {
     status.setComplete();
-    return "redirect:/profile/cafe/addtable/{id}";
+    return "redirect:/profile/cafe/addtable/{cafeId}";
   }
   
-  @GetMapping("/addtable/{id}/reserve/{tableId}")
-  public String reserve(@PathVariable Integer id,@PathVariable Integer tableId, Model model) {
+  @GetMapping("/addtable/{cafeId}/reserve/{tableId}")
+  public String reserve(@PathVariable Integer cafeId,@PathVariable Integer tableId, Model model) {
     model.addAttribute("_table", service.findOne(tableId));
-    model.addAttribute("cafeId", id);
+    model.addAttribute("cafeId", cafeId);
     return "reserve";
   } 
   
-  @PostMapping("/addtable/{id}/reserve/{tableId}")
-  public String reserveSave(@ModelAttribute("_table") TableRequest request, @PathVariable Integer id, @PathVariable Integer tableId, Model model) {
-  request.setId(tableId);
-  System.out.println(request.getId());
+  @PostMapping("/addtable/{cafeId}/reserve/{tableId}")
+  public String reserveSave(@ModelAttribute("_table") TableRequest request, @PathVariable Integer cafeId, @PathVariable Integer tableId, Model model) {
+  request.setIsFree(false);
   service.save(request);
-    return "redirect:/profile/cafe/addtable/{id}";
+    return "redirect:/profile/cafe/addtable/{cafeId}";
   } 
+  
+  
   
   
 }

@@ -9,6 +9,8 @@ public class TableRequest {
 	
 	private int countOfPeople;
 	
+	private int tableNumber;
+	
 	private boolean isFree;
 	
 	private String user;
@@ -64,6 +66,14 @@ public class TableRequest {
 
 	public void setCafe(Cafe cafe) {
 		this.cafe = cafe;
+	}
+
+	public int getTableNumber() {
+		return tableNumber;
+	}
+
+	public void setTableNumber(int tableNumber) {
+		this.tableNumber = tableNumber;
 	}
 	
 }
