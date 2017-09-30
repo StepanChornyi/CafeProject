@@ -39,15 +39,15 @@ public class TableServiceImpl implements TableService {
 
   @Override
   public void save(TableRequest request) {
-    Table table = new Table();
-    table.setId(request.getId());
-    table.setCountOfPeople(request.getCountOfPeople());
-    table.setTableNumber(request.getTableNumber());
-    table.setUser(request.getUser());
-    table.setUserPhone(request.getUserPhone());
-    table.setIsFree(request.getIsFree());
-    table.setCafe(request.getCafe());
-    repository.save(table);
+    request.setIsFree(true);
+    saveRequest(request);
+  }
+  
+  @Override
+  public void saveNew(TableRequest request, Integer id) {
+	request.setCafe(repository.findCafeById(id));
+    request.setIsFree(true);
+    saveRequest(request);
   }
 
   @Override
@@ -55,6 +55,8 @@ public class TableServiceImpl implements TableService {
     repository.delete(id);
   }
 
+  
+  
   @Override
   public TableRequest findOne(Integer id) {
     Table table = repository.findOne(id);
@@ -68,5 +70,33 @@ public class TableServiceImpl implements TableService {
     request.setCafe(table.getCafe());
     return request;
   }
+
+@Override
+public void reserve(TableRequest request) {
+	request.setIsFree(false);
+	saveRequest(request);	
+}
+
+@Override
+public void dereserve(Integer id) {
+	Table table = repository.findOne(id);
+	table.setIsFree(true);
+	repository.save(table);
+}
+
+@Override
+public void saveRequest(TableRequest request) {
+	 	Table table = new Table();
+	    table.setId(request.getId());
+	    table.setCountOfPeople(request.getCountOfPeople());
+	    table.setTableNumber(request.getTableNumber());
+	    table.setUser(request.getUser());
+	    table.setUserPhone(request.getUserPhone());
+	    table.setIsFree(request.getIsFree());
+	    table.setCafe(request.getCafe());
+	    repository.save(table);
+}
+  
+  
 
 }

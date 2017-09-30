@@ -47,20 +47,15 @@ public class TableController {
   
   @PostMapping("/addtable/{cafeId}")
   public String save(@ModelAttribute("_table") TableRequest request,  SessionStatus status, @PathVariable Integer cafeId) {
-    //request.setId(id);
-	request.setIsFree(true);
-    request.setCafe(service.findOneCafeById(cafeId));
-    service.save(request);
+    service.saveNew(request, cafeId);
     return cancel(status);
   }
   
   
   @GetMapping("/addtable/{cafeId}/update/{tableId}")
-  public String update(@PathVariable Integer cafeId,@PathVariable Integer tableId, Model model) {
+  public String update(Model model,@PathVariable Integer cafeId,@PathVariable Integer tableId) {
     model.addAttribute("_table", service.findOne(tableId));
-    model.addAttribute("tables", service.findTableViewsByCafeId(cafeId));
-    model.addAttribute("cafeId", cafeId);
-    return "addtable";
+    return show(model, cafeId);
   } 
   
   @GetMapping("/addtable/{cafeId}/cancel")
@@ -77,12 +72,16 @@ public class TableController {
   } 
   
   @PostMapping("/addtable/{cafeId}/reserve/{tableId}")
-  public String reserveSave(@ModelAttribute("_table") TableRequest request, @PathVariable Integer cafeId, @PathVariable Integer tableId, Model model) {
-  request.setIsFree(false);
-  service.save(request);
+  public String reserveSave(@ModelAttribute("_table") TableRequest request, @PathVariable Integer tableId, Model model) {
+	service.reserve(request);
     return "redirect:/profile/cafe/addtable/{cafeId}";
   } 
   
+  @GetMapping("/addtable/{cafeId}/dereserve/{tableId}")
+  public String dereserve(@PathVariable Integer tableId) {
+	service.dereserve(tableId);
+    return "redirect:/profile/cafe/addtable/{cafeId}";
+  } 
   
   
   
