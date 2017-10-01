@@ -129,6 +129,9 @@ label.star:before {
 			</div>
 		</div>
 		
+		<a href="/cafe/${cafe.id}/tables" class="btn btn-sm btn-outline-danger">Tables</a>
+		<a href="/profile/cafe/${cafe.id}/orders" class="btn btn-sm btn-outline-info">Orders</a>
+		
 		<form:form action="/cafedesc/${cafe.id}" method="POST" modelAttribute="comment">
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="user">User:</label>

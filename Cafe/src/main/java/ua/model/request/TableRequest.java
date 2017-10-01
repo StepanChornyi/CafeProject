@@ -7,9 +7,9 @@ public class TableRequest {
 	
 	private Integer id;
 	
-	private int countOfPeople;
+	private Integer countOfPeople;
 	
-	private int tableNumber;
+	private Integer tableNumber;
 	
 	private boolean isFree;
 	
@@ -26,14 +26,6 @@ public class TableRequest {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public int getCountOfPeople() {
-		return countOfPeople;
-	}
-
-	public void setCountOfPeople(int countOfPeople) {
-		this.countOfPeople = countOfPeople;
 	}
 
 	public boolean getIsFree() {
@@ -68,12 +60,21 @@ public class TableRequest {
 		this.cafe = cafe;
 	}
 
-	public int getTableNumber() {
+	public Integer getCountOfPeople() {
+		return countOfPeople;
+	}
+
+	public void setCountOfPeople(Integer countOfPeople) {
+		this.countOfPeople = countOfPeople;
+	}
+
+	public Integer getTableNumber() {
 		return tableNumber;
 	}
 
-	public void setTableNumber(int tableNumber) {
+	public void setTableNumber(Integer tableNumber) {
 		this.tableNumber = tableNumber;
 	}
+
 	
 }

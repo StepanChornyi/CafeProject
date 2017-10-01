@@ -46,6 +46,8 @@ public class CafeServiceImpl   implements CafeService {
 		Cafe cafe=new Cafe();
 		cafe.setName(request.getName());
 		cafe.setId(request.getId());
+		if(request.getRate()==0)
+			request.setRate(5);
 		cafe.setRate(request.getRate());
 		cafe.setCountRate(request.getCountRate());
 		cafe.setShortDescription(request.getShortDescription());

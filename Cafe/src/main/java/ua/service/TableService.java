@@ -28,4 +28,6 @@ public interface TableService{
   
   void dereserve(Integer id);
   
+  List<TableView> findFreeTableViewsByCafeId(Integer id);
+  
 }

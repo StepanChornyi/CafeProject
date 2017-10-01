@@ -10,8 +10,8 @@
 <title>Meal</title>
 </head>
 <body>
-<a href="/addmeal" class="btn btn-outline-warning btn-sm">Add Meal</a>
 	<div class="container">
+	<a href="/addmeal" class="btn btn-outline-warning btn-sm">Add Meal</a>
 		<div class="row">
 			<div class="col-12">
 				<table class="table table-bordered">

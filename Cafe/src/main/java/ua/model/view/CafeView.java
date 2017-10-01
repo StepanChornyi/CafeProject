@@ -33,6 +33,12 @@ public class CafeView {
 	
 	private String close;
 	
+	
+	
+	public CafeView() {
+		super();
+	}
+
 	public CafeView(Integer id, int rate,int countRate, String name, String photoUrl, int version, String address,String fullDescription,String shortDescription, Type type, String phone,  LocalTime open, LocalTime close) {
 		this.id = id;
 		this.countRate = countRate;

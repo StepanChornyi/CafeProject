@@ -83,8 +83,8 @@
 						</tr>
 					</c:forEach>
 				</table>
-				<a href="/profile/profilecafe/${cafeId}"
-					class="btn btn-outline-secondary">Cafe</a>
+				<a href="/profile"
+					class="btn btn-outline-secondary">Profile</a>
 			</div>
 		</div>
 	</div>

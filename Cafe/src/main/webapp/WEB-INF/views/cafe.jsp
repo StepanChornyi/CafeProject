@@ -13,8 +13,8 @@
 <title>Cafe</title>
 </head>
 <body>
-<a href="/addcafe" class="btn btn-outline-warning btn-sm">Add Cafe</a>
 	<div class="container">
+	<a href="/addcafe" class="btn btn-outline-warning btn-sm">Add Cafe</a>
 		<div class="row">
 			<div class="col-12">
 				<table class="table table-bordered">
