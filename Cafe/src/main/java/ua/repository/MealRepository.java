@@ -34,4 +34,7 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
 	
 	@Query("SELECT c FROM Cafe c WHERE c.name=?1")
 	Cafe findCafeByName(String name);
+	
+	@Query("SELECT m FROM Meal m WHERE m.title=?1")
+	Meal findByName(String name);
 }

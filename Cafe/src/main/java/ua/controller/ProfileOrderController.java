@@ -52,13 +52,19 @@ public class ProfileOrderController {
   
   
   
-  /*
+  
   @PostMapping("/addorder")
-  public String saveOrderShow(@ModelAttribute("order") OrderRequest request, @PathVariable Integer cafeId, Model model) {
+  public String saveOrderShow(@ModelAttribute("order") OrderRequest request) {
 	service.saveNew(request);
-    model.addAttribute("cafeId", cafeId);
-    return "redirect:/profile/cafe/{cafeId}";
-  }*/
+    return "redirect:/profile/cafe/{cafeId}/orders";
+  }
+  
+  
+  @GetMapping("/delete/{orderId}")
+  public String delete(@PathVariable Integer orderId) {
+    service.delete(orderId);
+    return "redirect:/profile/cafe/{cafeId}/orders";
+  }
   
   /*
   @GetMapping("/profile/cafe/addtable/{cafeId}/delete/{tableId}")

@@ -39,7 +39,7 @@
 							<td class="text-center"><a
 								href="/admin/table/update/${order.id}"
 								class="btn btn-outline-warning btn-sm">Update</a> <a
-								href="/admin/table/delete/${order.id}"
+								href="/profile/cafe/${cafeId}/delete/${order.id}"
 								class="btn btn-outline-danger btn-sm">Delete</a></td>
 						</tr>
 						

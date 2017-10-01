@@ -38,18 +38,6 @@
 						</div>
 					</div>
 				</form:form>
-				<table class="table table-bordered">
-					<tr>
-						<th class="text-center">Tables</th>
-						<th class="text-center">Meals</th>
-					</tr>
-					
-						<tr>
-							<td><c:forEach var="table" items="${tables}">${table}<br></c:forEach></td>
-							<td><c:forEach var="meal" items="${meals}">${meal}<br></c:forEach></td>
-						</tr>
-					
-				</table>
 			</div>
 		</div>
 		</div>

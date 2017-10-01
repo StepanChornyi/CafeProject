@@ -1,5 +1,5 @@
 package ua.entity;
 
 public enum Status {
-	PADED, READY, GETED
+	PAID, DONE, EXECUTED
 }
