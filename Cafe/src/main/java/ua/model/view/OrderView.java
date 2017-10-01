@@ -3,6 +3,8 @@ package ua.model.view;
 import java.math.BigDecimal;
 import java.util.List;
 
+import ua.entity.Status;
+
 public class OrderView {
 	
 	private Integer id;
@@ -17,11 +19,11 @@ public class OrderView {
 	
 	
 
-	public OrderView(Integer id, String status, Integer table, BigDecimal price) {
+	public OrderView(Integer id, int table , Status status ,  BigDecimal price) {
 		super();
 		this.id = id;
-		this.status = status;
-		this.table = table;
+		this.status = status.toString();
+		this.table = Integer.valueOf(table);
 		this.price = price;
 	}
 

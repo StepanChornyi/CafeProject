@@ -29,7 +29,11 @@
 						<tr>
 							<td>${order.table}</td>
 							<td>${order.status}</td>
-							<td>${order.meals}</td>
+							<td>
+							<c:forEach var="meal" items="${order.meals}">
+							${meal}<br>
+							</c:forEach>
+							</td>
 							<td>${order.price}</td>
 							
 							<td class="text-center"><a

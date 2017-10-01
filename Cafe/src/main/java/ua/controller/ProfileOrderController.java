@@ -35,18 +35,23 @@ public class ProfileOrderController {
   
   @GetMapping("/orders")
   public String show(Model model, @PathVariable Integer cafeId) {
-	//model.addAttribute("orders", service.findAllOrdersByCafeId(cafeId));
+	model.addAttribute("orders", service.findAllOrders(cafeId));
     model.addAttribute("cafeId", cafeId);
     return "order";
   }
   
+  
+  
   @GetMapping("/addorder")
   public String addOrderShow(Model model, @PathVariable Integer cafeId) {
-	//model.addAttribute("tables", service.findAllFreeTablesByCafeId(cafeId));
-	//model.addAttribute("meals", service.findAllMealsByCafeId(cafeId));
+	model.addAttribute("tables", service.findTableByCafeId(cafeId));
+	model.addAttribute("meals", service.findMealsByCafeId(cafeId));
     model.addAttribute("cafeId", cafeId);
     return "addorder";
   }
+  
+  
+  
   /*
   @PostMapping("/addorder")
   public String saveOrderShow(@ModelAttribute("order") OrderRequest request, @PathVariable Integer cafeId, Model model) {

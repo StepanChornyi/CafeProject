@@ -17,7 +17,7 @@ public class OrderRequest {
 	
 	private Table table;
 	
-	private List<Meal> meals = new ArrayList<>();
+	private List<String> meals = new ArrayList<>();
 
 	public Integer getId() {
 		return id;
@@ -43,11 +43,11 @@ public class OrderRequest {
 		this.table = table;
 	}
 
-	public List<Meal> getMeals() {
+	public List<String> getMeals() {
 		return meals;
 	}
 
-	public void setMeals(List<Meal> meals) {
+	public void setMeals(List<String> meals) {
 		this.meals = meals;
 	}
 
