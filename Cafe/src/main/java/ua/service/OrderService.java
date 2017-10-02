@@ -23,4 +23,8 @@ public interface OrderService {
 	List<String> findMealsByCafeId(Integer id);
 	
 	void delete(Integer id);
+	
+	void setDone(Integer id);
+	
+	void setPaid(Integer id);
 }

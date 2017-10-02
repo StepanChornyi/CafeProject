@@ -72,6 +72,22 @@ public class OrderServiceImpl implements OrderService {
 	public void delete(Integer id) {
 		repository.delete(id);
 	}
+
+	@Override
+	public void setDone(Integer id) {
+		Order order = repository.findOne(id);
+		order.setStatus(Status.DONE);
+		repository.save(order);
+	}
+
+	@Override
+	public void setPaid(Integer id) {
+		Order order = repository.findOne(id);
+		order.setStatus(Status.PAID);
+		repository.save(order);
+	}
+	
+	
 	
 	
 	

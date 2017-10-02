@@ -36,9 +36,20 @@
 							</td>
 							<td>${order.price}</td>
 							
-							<td class="text-center"><a
-								href="/admin/table/update/${order.id}"
-								class="btn btn-outline-warning btn-sm">Update</a> <a
+							<td class="text-center">
+							<c:if
+									test="${order.status.equals(executed)}">
+									<a
+								href="/profile/cafe/${cafeId}/done/${order.id}"
+								class="btn btn-outline-info btn-sm">Done</a> 
+								</c:if>
+								<c:if
+									test="${order.status.equals(done)}">
+									<a
+								href="/profile/cafe/${cafeId}/paid/${order.id}"
+								class="btn btn-outline-success btn-sm">Paid</a> 
+								</c:if>
+							<a
 								href="/profile/cafe/${cafeId}/delete/${order.id}"
 								class="btn btn-outline-danger btn-sm">Delete</a></td>
 						</tr>

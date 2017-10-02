@@ -17,7 +17,7 @@ import ua.model.request.CafeRequest;
 import ua.service.CafeService;
 
 @Controller
-@RequestMapping("/addcafe")
+@RequestMapping("/profile/addcafe")
 @SessionAttributes("addcafe")
 public class AddCafeController {
 
@@ -37,7 +37,7 @@ private final CafeService service;
 	@GetMapping("/cancel")
 	public String cancel(SessionStatus status) {
 		status.setComplete();
-		return "redirect:/cafe";
+		return "redirect:/profile";
 	}
 	
 	@PostMapping

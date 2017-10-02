@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import ua.entity.Status;
 import ua.model.request.OrderRequest;
 import ua.model.request.TableRequest;
 import ua.service.OrderService;
@@ -36,6 +37,9 @@ public class ProfileOrderController {
   @GetMapping("/orders")
   public String show(Model model, @PathVariable Integer cafeId) {
 	model.addAttribute("orders", service.findAllOrders(cafeId));
+	model.addAttribute("executed", Status.EXECUTED.toString());
+	model.addAttribute("done", Status.DONE.toString());
+	model.addAttribute("paid", Status.PAID.toString());
     model.addAttribute("cafeId", cafeId);
     return "order";
   }
@@ -63,6 +67,18 @@ public class ProfileOrderController {
   @GetMapping("/delete/{orderId}")
   public String delete(@PathVariable Integer orderId) {
     service.delete(orderId);
+    return "redirect:/profile/cafe/{cafeId}/orders";
+  }
+  
+  @GetMapping("/done/{orderId}")
+  public String done(@PathVariable Integer orderId) {
+    service.setDone(orderId);
+    return "redirect:/profile/cafe/{cafeId}/orders";
+  }
+  
+  @GetMapping("/paid/{orderId}")
+  public String paid(@PathVariable Integer orderId) {
+    service.setPaid(orderId);
     return "redirect:/profile/cafe/{cafeId}/orders";
   }
   

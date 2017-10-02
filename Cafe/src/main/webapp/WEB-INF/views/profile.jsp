@@ -15,8 +15,8 @@
 <body>
 	<div class="container">
 		<h2>Profile</h2>
-		<a href="/cafe" class="btn btn-outline-success">Add cafe</a> 
-		<a href="/meal" class="btn btn-outline-success">Add meal</a>
+		<a href="/profile/addcafe" class="btn btn-outline-success">Add cafe</a> 
+		<a href="/meal" class="btn btn-outline-success">Meals</a>
 		<div class="row">
 			<div class="col-12">
 				<table class="table table-bordered">

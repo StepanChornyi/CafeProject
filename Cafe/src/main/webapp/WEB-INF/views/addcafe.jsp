@@ -16,7 +16,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<form:form action="/addcafe" method="POST" modelAttribute="addcafe">
+				<form:form action="/profile/addcafe" method="POST" modelAttribute="addcafe">
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="name">Name:</label>
 						<div class="col-10">
@@ -72,7 +72,7 @@
 					<div class="form-group row">
 						<div class="col-10 mr-left">
 							<button class="btn btn-sm btn-outline-success">Save</button>
-							<a href="/addcafe/cancel" class="btn btn-sm btn-outline-warning">Cancel</a>
+							<a href="/profile/addcafe/cancel" class="btn btn-sm btn-outline-warning">Cancel</a>
 						</div>
 					</div>
 				</form:form>
