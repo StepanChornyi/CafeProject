@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import ua.entity.Cafe;
 import ua.entity.CafeComment;
 import ua.entity.User;
+import ua.model.view.CafeIndexView;
 import ua.model.view.CafeView;
 
 public interface CafeRepository extends JpaNameRepository<Cafe>{
@@ -33,4 +34,7 @@ public interface CafeRepository extends JpaNameRepository<Cafe>{
 	
 	@Query("SELECT cc FROM CafeComment cc WHERE cc.cafe.id=?1")
 	List<CafeComment> findAllComentByCafeId(Integer id);
+	
+	@Query("SELECT new ua.model.view.CafeIndexView(c.id, c.rate,c.countRate, c.name, c.photoUrl, c.version, c.address, c.shortDescription, c.type) FROM Cafe c ORDER BY c.rate DESC")
+	List<CafeIndexView> findAllCafes();
 }

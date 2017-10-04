@@ -26,7 +26,11 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-12 text-right">
+		<div class="col-8">
+				<a href="/cafe" class="btn btn-sm btn-outline-primary">All Cafes</a>
+				<a href="/maels" class="btn btn-sm btn-outline-primary">All Meals</a>
+			</div>
+			<div class="col-4 text-right">
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<form:form action="/logout">
 						<a href="/admin" class="btn btn-sm btn-outline-primary">Admin</a>

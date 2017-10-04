@@ -9,5 +9,7 @@ public interface CafeIndexService {
 	
 	List<CafeIndexView> findTopFiveCafe();
 	
+	List<CafeIndexView> findAllCafeView();
+	
 	List<Meal> findMealByCafeId(Integer id);
 }

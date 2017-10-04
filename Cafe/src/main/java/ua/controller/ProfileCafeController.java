@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ua.service.CafeService;
 
 @Controller
-@RequestMapping("/cafe")
+@RequestMapping("/cafekk")
 public class ProfileCafeController {
 
 	private final CafeService service;

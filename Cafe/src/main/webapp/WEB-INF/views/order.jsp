@@ -15,6 +15,7 @@
 <body>
 	<div class="container">
 	<a href="/profile/cafe/${cafeId}/addorder" class="btn btn-outline-warning btn-sm">Add Order</a>
+	<a href="/profile/cafe/${cafeId}/paidorder" class="btn btn-outline-warning btn-sm">Paid Orders</a>
 		<div class="row">
 			<div class="col-12">
 				<table class="table table-bordered">
@@ -38,7 +39,7 @@
 							
 							<td class="text-center">
 							<c:if
-									test="${order.status.equals(executed)}">
+									test="${order.status.equals(accepted)}">
 									<a
 								href="/profile/cafe/${cafeId}/done/${order.id}"
 								class="btn btn-outline-info btn-sm">Done</a> 
@@ -53,9 +54,6 @@
 								href="/profile/cafe/${cafeId}/delete/${order.id}"
 								class="btn btn-outline-danger btn-sm">Delete</a></td>
 						</tr>
-						
-						
-						
 					</c:forEach>
 				</table>
 			</div>

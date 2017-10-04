@@ -5,6 +5,7 @@ package ua.service;
 import java.util.List;
 
 import ua.entity.Order;
+import ua.entity.Status;
 import ua.entity.Table;
 import ua.model.request.OrderRequest;
 import ua.model.view.OrderView;
@@ -27,4 +28,6 @@ public interface OrderService {
 	void setDone(Integer id);
 	
 	void setPaid(Integer id);
+	
+	List<OrderView> findPaidOrders(Integer id);
 }

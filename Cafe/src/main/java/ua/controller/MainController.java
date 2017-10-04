@@ -42,4 +42,10 @@ private final CafeIndexService service;
 	public String admin() {
 		return "admin";
 	}
+	
+	@GetMapping("/cafe")
+	public String cafe(Model model) {
+		model.addAttribute("cafes", service.findAllCafeView());
+		return "cafe";
+	}
 }

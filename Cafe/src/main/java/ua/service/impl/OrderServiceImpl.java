@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public List<OrderView> findAllOrders(Integer id) {
-		List<OrderView> orders = repository.findAllViews(id);
+		List<OrderView> orders = repository.findUnpaidViews(id, Status.ACCEPTED, Status.DONE);
 		for (OrderView order : orders) {
 			order.setMeals(repository.findAllMealByOrderId(order.getId()));
 		}
@@ -48,7 +48,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public void saveNew(OrderRequest request) {
-		request.setStatus(Status.EXECUTED.toString());
+		request.setStatus(Status.ACCEPTED.toString());
 		double price = 0;
 		for (Meal meal : request.getMeals()) {
 			price += meal.getPrice().doubleValue();
@@ -86,78 +86,15 @@ public class OrderServiceImpl implements OrderService {
 		order.setStatus(Status.PAID);
 		repository.save(order);
 	}
-	
-	
-	
-	
-	
-	 
-/*
-	@Override
-	public void save(OrderRequest request) {
-		Order order=new Order();
-		order.setId(request.getId());
-		order.setMeals(request.getMeals());
-		order.setTable(request.getTable());
-		repository.save(order);
-	}
 
 	@Override
-	public void delete(Integer id) {
-		repository.delete(id);
+	public List<OrderView> findPaidOrders(Integer id) {
+		List<OrderView> orders = repository.findPaidViews(id, Status.PAID);
+		for (OrderView order : orders) {
+			order.setMeals(repository.findAllMealByOrderId(order.getId()));
+		}
+		return orders;
 	}
-
-	@Override
-	public OrderRequest findOne(Integer id) {
-		Order order=repository.findOneRequest(id);
-		OrderRequest request = new OrderRequest();
-		request.setId(order.getId());
-		request.setMeals(order.getMeals());
-		request.setTable(order.getTable());
-		return request;
-	}
-	
-	
-
-	@Override
-	public List<OrderView> findAllViews() {
-		return repository.findAllViews();
-	}
-	
-	@Override
-	public List<String> findAllMealByCafeId(Integer id) {
-		return repository.findAllMealByCafeId(id);
-	}
-	
-	
-	
-	 @Override
-	@Transactional(readOnly=true)
-	public List<OrderView> findAllOrdersByCafeId(Integer id) {
-		List<OrderView> views = repository.findAllOrdersByCafeId(id);
-		views.forEach(this::loadMeals);
-		return views;
-	}
-	
-	private void loadMeals(OrderView view) {
-		view.setMeals(repository.findAllMealsByOrderId(view.getId()));
-		//view.setIngredients(repository.findAllIngredientsByMealId(view.getId()));
-	}
-
-
-
-	@Override
-	public Table findOneTable(Integer id) {
-		return repository.findOneTable(id);
-	}
-
-	@Override
-	public Order findOneOrderByTableId(Integer id) {
-		return repository.findOneOrderByTableId(id);
-	}
-
-	*/
-
 	
 
 }

@@ -23,24 +23,6 @@ public class CafeIndexServiceImpl implements CafeIndexService {
 
 	@Override
 	public List<CafeIndexView> findTopFiveCafe() {
-		/* List<CafeIndexView> cafeIndexViews= repository.findAllCafes();
-		    List<CafeIndexView> cafeTopFive = new ArrayList<>();
-		    int i=0;
-		    while(i<5){
-		    double rate = 0;
-		    CafeIndexView cafeIndexView = null;
-		    Iterator<CafeIndexView> iter = cafeIndexViews.iterator();
-		    while(iter.hasNext()){
-		      CafeIndexView cafe = iter.next();
-		      if(rate<cafe.getRate().doubleValue()){
-		        rate = cafe.getRate().doubleValue();
-		        cafeIndexView = cafe;
-		      }
-		    }
-		    cafeTopFive.add(cafeIndexView);
-		    cafeIndexViews.remove(cafeIndexView);
-		    i++;
-		    }*/
 		 List<CafeIndexView> cafeIndexViews= repository.findAllCafes();
 		    List<CafeIndexView> cafeTopFive = new ArrayList<>();
 		    Iterator<CafeIndexView> iter = cafeIndexViews.iterator();
@@ -58,5 +40,12 @@ public class CafeIndexServiceImpl implements CafeIndexService {
 	public List<Meal> findMealByCafeId(Integer id) {
 		return repository.findMealByCafeId(id);
 	}
+
+	@Override
+	public List<CafeIndexView> findAllCafeView() {
+		return repository.findAllCafes();
+	}
+	
+	
 	
 }

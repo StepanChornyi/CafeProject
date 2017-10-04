@@ -37,14 +37,12 @@ public class ProfileOrderController {
   @GetMapping("/orders")
   public String show(Model model, @PathVariable Integer cafeId) {
 	model.addAttribute("orders", service.findAllOrders(cafeId));
-	model.addAttribute("executed", Status.EXECUTED.toString());
+	model.addAttribute("accepted", Status.ACCEPTED.toString());
 	model.addAttribute("done", Status.DONE.toString());
 	model.addAttribute("paid", Status.PAID.toString());
     model.addAttribute("cafeId", cafeId);
     return "order";
   }
-  
-  
   
   @GetMapping("/addorder")
   public String addOrderShow(Model model, @PathVariable Integer cafeId) {
@@ -54,15 +52,11 @@ public class ProfileOrderController {
     return "addorder";
   }
   
-  
-  
-  
   @PostMapping("/addorder")
   public String saveOrderShow(@ModelAttribute("order") OrderRequest request) {
 	service.saveNew(request);
     return "redirect:/profile/cafe/{cafeId}/orders";
   }
-  
   
   @GetMapping("/delete/{orderId}")
   public String delete(@PathVariable Integer orderId) {
@@ -82,6 +76,12 @@ public class ProfileOrderController {
     return "redirect:/profile/cafe/{cafeId}/orders";
   }
   
+  @GetMapping("/paidorder")
+  public String paidorder(Model model, @PathVariable Integer cafeId) {
+	model.addAttribute("orders", service.findPaidOrders(cafeId));
+    return "paidorder";
+  }
+  
   /*
   @GetMapping("/profile/cafe/addtable/{cafeId}/delete/{tableId}")
   public String delete(@PathVariable Integer cafeId,@PathVariable Integer tableId) {
@@ -94,7 +94,6 @@ public class ProfileOrderController {
     service.saveNew(request, cafeId);
     return cancel(status);
   }
-  
   
   @GetMapping("/profile/cafe/addtable/{cafeId}/update/{tableId}")
   public String update(Model model,@PathVariable Integer cafeId,@PathVariable Integer tableId) {
