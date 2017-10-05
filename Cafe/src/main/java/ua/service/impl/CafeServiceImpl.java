@@ -46,10 +46,7 @@ public class CafeServiceImpl   implements CafeService {
 		Cafe cafe=new Cafe();
 		cafe.setName(request.getName());
 		cafe.setId(request.getId());
-		if(request.getRate()==0)
-			request.setRate(5);
 		cafe.setRate(request.getRate());
-		cafe.setCountRate(request.getCountRate());
 		cafe.setShortDescription(request.getShortDescription());
 		cafe.setPhotoUrl(request.getPhotoUrl());
 		cafe.setAddress(request.getAddress());
@@ -83,7 +80,6 @@ public class CafeServiceImpl   implements CafeService {
 		request.setName(cafe.getName());
 		request.setId(cafe.getId());
 		request.setRate(cafe.getRate());
-		request.setCountRate(cafe.getCountRate());
 		request.setPhotoUrl(cafe.getPhotoUrl());
 		request.setAddress(cafe.getAddress());
 		request.setVersion(cafe.getVersion());
@@ -110,7 +106,6 @@ public class CafeServiceImpl   implements CafeService {
 		request.setName(cafe.getName());
 		request.setId(cafe.getId());
 		request.setRate(cafe.getRate());
-		request.setCountRate(cafe.getCountRate());
 		request.setPhotoUrl(cafe.getPhotoUrl());
 		request.setAddress(cafe.getAddress());
 		request.setVersion(cafe.getVersion());

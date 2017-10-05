@@ -1,15 +1,15 @@
 package ua.model.view;
 
 
+import java.math.BigDecimal;
+
 import ua.entity.Type;
 
 public class CafeIndexView {
 
 	private Integer id;
 	
-	private int rate;
-	
-	private int countRate;
+	private BigDecimal rate;
 	
 	private String name;
 	
@@ -23,10 +23,9 @@ public class CafeIndexView {
 	
 	private String type;
 
-	public CafeIndexView(Integer id, int rate,int countRate, String name, String photoUrl, int version, String address, String shortDescription, Type type) {
+	public CafeIndexView(Integer id, BigDecimal rate, String name, String photoUrl, int version, String address, String shortDescription, Type type) {
 		this.id = id;
 		this.rate = rate;
-		this.countRate = countRate;
 		this.name = name;
 		this.photoUrl = photoUrl;
 		this.version = version;
@@ -45,21 +44,14 @@ public class CafeIndexView {
 	}
 
 	
-	public int getRate() {
+	public BigDecimal getRate() {
 		return rate;
 	}
 
-	public void setRate(int rate) {
+	public void setRate(BigDecimal rate) {
 		this.rate = rate;
 	}
 
-	public int getCountRate() {
-		return countRate;
-	}
-
-	public void setCountRate(int countRate) {
-		this.countRate = countRate;
-	}
 
 	public String getName() {
 		return name;
@@ -111,10 +103,11 @@ public class CafeIndexView {
 
 	@Override
 	public String toString() {
-		return "CafeIndexView [id=" + id + ", rate=" + rate + ", countRate=" + countRate + ", name=" + name
-				+ ", photoUrl=" + photoUrl + ", version=" + version + ", address=" + address + ", shortDescription="
-				+ shortDescription + ", type=" + type + "]";
+		return "CafeIndexView [id=" + id + ", rate=" + rate + ", name=" + name + ", photoUrl=" + photoUrl + ", version="
+				+ version + ", address=" + address + ", shortDescription=" + shortDescription + ", type=" + type + "]";
 	}
+
+	
 
 	
 	

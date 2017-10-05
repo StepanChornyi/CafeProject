@@ -10,7 +10,7 @@ import ua.model.view.CafeIndexView;
 
 public interface CafeIndexRepository extends JpaNameRepository<Cafe>{
 
-	@Query("SELECT new ua.model.view.CafeIndexView(c.id, c.rate,c.countRate, c.name, c.photoUrl, c.version, c.address, c.shortDescription, c.type) FROM Cafe c ORDER BY c.rate DESC")
+	@Query("SELECT new ua.model.view.CafeIndexView(c.id, c.rate, c.name, c.photoUrl, c.version, c.address, c.shortDescription, c.type) FROM Cafe c ORDER BY c.rate DESC")
 	List<CafeIndexView> findAllCafes();
 	
 	@Query("SELECT m FROM Meal m JOIN m.cuisine WHERE m.cafe.id=?1")

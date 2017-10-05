@@ -1,5 +1,6 @@
 package ua.entity;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +17,7 @@ import javax.persistence.Table;
 @Table(name="cafe")
 public class Cafe extends AbstractEntityName{
 	
-	private int rate;
-	
-	private int countRate;
+	private BigDecimal rate;
 	
 	private String photoUrl;
 	
@@ -50,15 +49,15 @@ public class Cafe extends AbstractEntityName{
 	private List<Meal> meals = new ArrayList<>();
 	
 	@OneToMany(mappedBy="cafe")
-	private List<CafeComment> comment;
+	private List<Comment> comment;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
 	
-	public List<CafeComment> getComment() {
+	public List<Comment> getComment() {
 		return comment;
 	}
-	public void setComment(List<CafeComment> comment) {
+	public void setComment(List<Comment> comment) {
 		this.comment = comment;
 	}
 	public List<Meal> getMeals() {
@@ -133,18 +132,13 @@ public class Cafe extends AbstractEntityName{
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public int getCountRate() {
-		return countRate;
-	}
-	public void setCountRate(int countRate) {
-		this.countRate = countRate;
-	}
-	public int getRate() {
+	public BigDecimal getRate() {
 		return rate;
 	}
-	public void setRate(int rate) {
+	public void setRate(BigDecimal rate) {
 		this.rate = rate;
 	}
+	
 
 	
 	

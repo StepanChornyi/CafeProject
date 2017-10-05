@@ -1,15 +1,15 @@
 package ua.model.request;
 
 
+import java.math.BigDecimal;
+
 import ua.entity.OpenClose;
 
 public class CafeRequest {
 
 	private Integer id;
 
-	private int rate;
-	
-	private int countRate;
+	private BigDecimal rate;
 
 	private String name;
 
@@ -43,21 +43,14 @@ public class CafeRequest {
 
 	
 
-	public int getRate() {
+	public BigDecimal getRate() {
 		return rate;
 	}
 
-	public void setRate(int rate) {
+	public void setRate(BigDecimal rate) {
 		this.rate = rate;
 	}
 
-	public int getCountRate() {
-		return countRate;
-	}
-
-	public void setCountRate(int countRate) {
-		this.countRate = countRate;
-	}
 
 	public String getName() {
 		return name;
