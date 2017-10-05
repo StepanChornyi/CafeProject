@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import ua.model.request.CafeCommentRequest;
+import ua.model.request.CommentRequest;
 import ua.service.CafeCommentService;
 import ua.service.CafeIndexService;
 import ua.service.CafeService;
@@ -35,28 +35,35 @@ private final CafeCommentService commentService;
 	
 	@GetMapping("/{id}")
 	public String desc(@PathVariable Integer id, Model model){
-		model.addAttribute("cafe", service.findOne(id));
+		model.addAttribute("cafe", service.findOneCafeView(id));
 		model.addAttribute("meals", indexService.findMealByCafeId(id));
-		model.addAttribute("comments", commentService.findAllCommentByCafeId(id));
+		model.addAttribute("comments", service.findAllCommentByCafeId(id));
+		model.addAttribute("cafeId", id);
 		return "cafedesc";
 	}
 	
-	@PostMapping("/{id}")
-	public String saveComment(@ModelAttribute("comment") CafeCommentRequest commentRequest,@PathVariable Integer id, SessionStatus status) {
-		commentService.saveComment(commentRequest, id);
-		return cancel(status);
-	}
-	
-	@ModelAttribute("comment")
-	public CafeCommentRequest getFormComment() {
-		return new CafeCommentRequest();
-	}
 	
 	@GetMapping("/{id}/cancel")
 	public String cancel(SessionStatus status) {
 		status.setComplete();
 		return "redirect:/cafedesc/{id}";
 	}	
+	
+	
+	@PostMapping("/{id}/comment")
+	public String save(Model model, @PathVariable Integer id, @ModelAttribute("comment") CommentRequest request,SessionStatus status) {
+		request.setCafeId(id);
+		service.saveComment(request);
+		return cancel(status);
+	}
+	
+	
+	
+	@ModelAttribute("comment")
+	public CommentRequest getFormComment() {
+		return new CommentRequest();
+	}
+	
 	
 	
 }

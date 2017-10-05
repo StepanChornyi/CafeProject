@@ -5,14 +5,16 @@ import java.time.LocalTime;
 import java.util.List;
 
 import ua.entity.Cafe;
+import ua.entity.Comment;
 import ua.entity.Type;
 import ua.entity.User;
 import ua.model.request.CafeRequest;
+import ua.model.request.CommentRequest;
 import ua.model.view.CafeView;
 
 public interface CafeService {
 	
-	//extends CrudService<Cafe, Integer>
+	
 	List<Type> findAllTypes();
 
 	List<LocalTime> findAllOpenCloses();
@@ -33,4 +35,9 @@ public interface CafeService {
 	
 	User findOneUserByEmail(String email);
 	
+	List<Comment> findAllCommentByCafeId(Integer id);
+	
+	void saveComment(CommentRequest request);
+	
+	CafeView findOneCafeView(Integer id);
 }

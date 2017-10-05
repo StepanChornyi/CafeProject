@@ -1,3 +1,4 @@
+<%@ include file="header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec"
@@ -25,32 +26,6 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-		<div class="col-8">
-				<a href="/cafe" class="btn btn-sm btn-outline-primary">All Cafes</a>
-				<a href="/maels" class="btn btn-sm btn-outline-primary">All Meals</a>
-			</div>
-			<div class="col-4 text-right">
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<form:form action="/logout">
-						<a href="/admin" class="btn btn-sm btn-outline-primary">Admin</a>
-						<button class="btn btn-primary btn-sm">Logout</button>
-					</form:form>
-				</sec:authorize>
-
-				<sec:authorize access="isAnonymous()">
-					<a href="/login" class="btn btn-primary btn-sm">Login</a>
-					<a href="/registration" class="btn btn-secondary btn-sm">Registration</a>
-				</sec:authorize>
-
-				<sec:authorize access="hasRole('ROLE_CAFE')">
-					<form:form action="/logout">
-						<a href="/profile" class="btn btn-sm btn-outline-primary">Profile</a>
-						<button class="btn btn-primary btn-sm">Logout</button>
-					</form:form>
-				</sec:authorize>
-			</div>
-		</div>
 		<div class="row">
 			<div class="col-12">
 				<table class="table table-bordered">

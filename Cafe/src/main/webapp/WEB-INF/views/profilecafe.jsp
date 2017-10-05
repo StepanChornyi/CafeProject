@@ -12,7 +12,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
 	crossorigin="anonymous">
-<title>CafeDesc</title>
+<title>Cafe</title>
 <style>
 
 </style>
@@ -37,7 +37,10 @@
 					</div>
 				</div>
 		</div>
-		<div class="row">		
+		<a href="/profile/cafe/addtable/${cafe.id}" class="btn btn-outline-danger btn-sm">Tables</a>
+		<a href="/profile/cafe/${cafe.id}/orders" class="btn btn-sm btn-outline-info">Orders</a>
+		<a href="/profile/addcafe/update/${cafe.id}" class="btn btn-sm btn-outline-success">Update</a>
+		<br><div class="row">		
 			<div class="col-12">
 				<table class="table table-bordered">
 						<tr>
@@ -61,55 +64,6 @@
 								</c:forEach>
 							</td>
 						<tr>
-					</c:forEach>
-				</table>
-			</div>
-		</div>
-		
-		<a href="/cafe/${cafe.id}/tables" class="btn btn-sm btn-outline-danger">Reservation</a
-		<div class="row">		
-			<div class="col-5">
-		<form:form action="/cafedesc/${cafe.id}/comment" method="POST" modelAttribute="comment">
-					<div class="form-group row">
-						<label class="col-2 col-form-label" for="user">User:</label>
-						<div class="col-10">
-							<form:input class="form-control" id="user" path="user"/>
-						</div>
-					</div>
-					 <div class="form-group row">
-						<label class="col-2 col-form-label" for="comment">Comment:</label>
-						<div class="col-10">
-							<form:textarea class="form-control" id="comment"
-								path="comment" rows="5"></form:textarea>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-2 col-form-label" for="rate">Rate:</label>
-						<div class="col-10">
-							<form:input class="form-control" id="rate" path="rate"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-10 mr-left">
-							<button class="btn btn-sm btn-outline-success">Save</button>
-						</div>
-					</div>
-				</form:form>
-				</div>
-					</div>
-				
-				<table class="table table-bordered">
-					<tr>
-						<th class="text-center">User</th>
-						<th class="text-center">Comment</th>
-						<th class="text-center">Rate</th>
-					</tr>
-					<c:forEach var="comment" items="${comments}">
-						<tr>
-							<td>${comment.user}</td>
-							<td>${comment.comment}</td>
-							<td>${comment.rate}</td>
-						</tr>
 					</c:forEach>
 				</table>
 			</div>

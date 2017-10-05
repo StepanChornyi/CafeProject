@@ -1,9 +1,11 @@
 package ua.model.request;
 
+import java.math.BigDecimal;
+
 import ua.entity.Cafe;
 
 
-public class CafeCommentRequest {
+public class CommentRequest {
 
 	private Integer id;
 
@@ -11,8 +13,9 @@ public class CafeCommentRequest {
 	
 	private String user;
 	
+	private BigDecimal rate;
 	
-	private Cafe cafe;
+	private Integer cafeId;
 
 	public Integer getId() {
 		return id;
@@ -39,14 +42,22 @@ public class CafeCommentRequest {
 		this.user = user;
 	}
 
-
-	public Cafe getCafe() {
-		return cafe;
+	public BigDecimal getRate() {
+		return rate;
 	}
 
-	public void setCafe(Cafe cafe) {
-		this.cafe = cafe;
+	public void setRate(BigDecimal rate) {
+		this.rate = rate;
 	}
+
+	public Integer getCafeId() {
+		return cafeId;
+	}
+
+	public void setCafeId(Integer cafeId) {
+		this.cafeId = cafeId;
+	}
+
 
 
 	
