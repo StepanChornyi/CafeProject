@@ -17,17 +17,19 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <form:form action="/cafe/${cafeId}/reserve/${_table.id}" method="POST" modelAttribute="_table">
+        <form:form action="/cafe/${cafeId}/reserve/${tableId}" method="POST" modelAttribute="_table">
           <div class="form-group row">
             <label class="col-2 col-form-label" for="user">Name :</label>
             <div class="col-10">
               <form:input class="form-control" id="user" path="user" />
+              <form:errors path="user" style="color:red;"/>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-2 col-form-label" for="userPhone">Phone :</label>
             <div class="col-10">
               <form:input class="form-control" id="userPhone" path="userPhone" />
+              <form:errors path="userPhone" style="color:red;"/>
             </div>
           </div>
           <div class="form-group row">

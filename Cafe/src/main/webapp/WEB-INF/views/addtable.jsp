@@ -18,14 +18,14 @@
 		<div class="row">
 			<div class="col-12">
 				<form:form action="/profile/cafe/addtable/${cafeId}" method="POST"
-					modelAttribute="_table">
+					modelAttribute="addtable">
 					<div class="form-group row">
-						<label class="col-2 col-form-label" for="tableNumber">Table
+						<label class="col-2 col-form-label" for="number">Table
 							number :</label>
 						<div class="col-10">
-							<form:input class="form-control" id="tableNumber"
-								path="tableNumber" />
-							<form:errors path="tableNumber" />
+							<form:input class="form-control" id="number"
+								path="number" />
+							<form:errors path="number" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -34,7 +34,7 @@
 						<div class="col-10">
 							<form:input class="form-control" id="countOfPeople"
 								path="countOfPeople" />
-								<form:errors path="countOfPeople" />
+								<form:errors path="countOfPeople" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">

@@ -17,10 +17,16 @@ public class TableRequest {
 	
 	private Integer tableNumber;
 	
+	
 	private boolean isFree;
 		
+	@Pattern(regexp = "^([A-Z][a-z]+)?$", message = "Ім'я має починатись з великої літери")
+	@NotBlank(message = "Це поле має бути заповнене")
 	private String user;
 	
+	
+	@Pattern(regexp = "^(\\+380[0-9]{9})?$", message = "Номер має бути у форматі +380XXXXXXXXX")
+	@NotBlank(message = "Це поле має бути заповнене")
 	private String userPhone;
 	
 	private Cafe cafe;

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import ua.model.request.AddTableRequest;
 import ua.model.request.TableRequest;
 import ua.service.TableService;
 
@@ -32,6 +33,11 @@ public class ProfileTableController {
     return new TableRequest();
   }
   
+  @ModelAttribute("addtable")
+  public AddTableRequest getAddForm() {
+    return new AddTableRequest();
+  }
+  
   @GetMapping("/profile/cafe/addtable/{cafeId}")
   public String show(Model model, @PathVariable Integer cafeId) {
     model.addAttribute("tables", service.findTableViewsByCafeId(cafeId));
@@ -47,16 +53,26 @@ public class ProfileTableController {
   }
   
   @PostMapping("/profile/cafe/addtable/{cafeId}")
-  public String save(@ModelAttribute("_table") @Valid TableRequest request,BindingResult br, Model model, SessionStatus status, @PathVariable Integer cafeId) {
+  public String save(@ModelAttribute("addtable") @Valid AddTableRequest request,BindingResult br, Model model, SessionStatus status, @PathVariable Integer cafeId) {
 	  if(br.hasErrors())return show(model, cafeId);
-	  service.saveNew(request, cafeId);
+	  TableRequest table = getForm();
+	  if(request.getId()!=null){
+	  table = service.findOne(request.getId());}
+	  table.setCountOfPeople(request.getCountOfPeople());
+	  table.setTableNumber(request.getNumber());
+	  service.saveNew(table, cafeId);
     return cancel(status);
   }
   
   
   @GetMapping("/profile/cafe/addtable/{cafeId}/update/{tableId}")
-  public String update(Model model,@PathVariable Integer cafeId,@PathVariable Integer tableId) {
-    model.addAttribute("_table", service.findOne(tableId));
+  public String update(Model model, @PathVariable Integer cafeId,@PathVariable Integer tableId) {
+    AddTableRequest request = getAddForm();
+    TableRequest table = service.findOne(tableId);
+    request.setId(table.getId());
+    request.setCountOfPeople(table.getCountOfPeople());
+    request.setNumber(table.getTableNumber());
+	model.addAttribute("addtable", request);
     return show(model, cafeId);
   } 
   
@@ -68,16 +84,20 @@ public class ProfileTableController {
   
   @GetMapping("/profile/cafe/addtable/{cafeId}/reserve/{tableId}")
   public String reserve(@PathVariable Integer cafeId, @PathVariable Integer tableId, Model model) {
-    model.addAttribute("_table", service.findOne(tableId));
-    model.addAttribute("cafeId", cafeId);
-    return "reservation";
-  } 
+	    model.addAttribute("cafeId", cafeId);
+	    model.addAttribute("tableId", tableId);
+	    return "reservation";
+	  } 
   
   @PostMapping("/profile/cafe/addtable/{cafeId}/reserve/{tableId}")
-  public String reserveSave(@PathVariable Integer cafeId, @ModelAttribute("_table") @Valid TableRequest request, @PathVariable Integer tableId, Model model, SessionStatus status, BindingResult br) {
-	  if(br.hasErrors())return reserve(cafeId, tableId,model);
-	  service.reserve(request);
-    return cancel(status);
+  public String reserveSave(@ModelAttribute("_table") @Valid TableRequest request, BindingResult bindingResult, @PathVariable Integer cafeId, @PathVariable Integer tableId, SessionStatus status, Model model) {
+	  if(bindingResult.hasErrors())return reserve(cafeId, tableId, model);
+	  TableRequest request1 = service.findOne(tableId);
+	  request1.setUser(request.getUser());
+	  request1.setUserPhone(request.getUserPhone());
+	  service.reserve(request1);
+	status.setComplete();
+    return "redirect:/profile/cafe/addtable/{cafeId}";
   } 
   
   @GetMapping("/profile/cafe/addtable/{cafeId}/dereserve/{tableId}")
@@ -88,15 +108,18 @@ public class ProfileTableController {
   
   @GetMapping("/cafe/{cafeId}/reserve/{tableId}")
   public String reserveU(@PathVariable Integer cafeId, @PathVariable Integer tableId, Model model) {
-    model.addAttribute("_table", service.findOne(tableId));
     model.addAttribute("cafeId", cafeId);
+    model.addAttribute("tableId", tableId);
     return "reserve";
   } 
   
   @PostMapping("/cafe/{cafeId}/reserve/{tableId}")
-  public String reserveSaveU(@PathVariable Integer cafeId, @ModelAttribute("_table") @Valid TableRequest request, @PathVariable Integer tableId, BindingResult br, Model model, SessionStatus status) {
-	  if(br.hasErrors())return reserveU(cafeId, tableId,model);
-	  service.reserve(request);
+  public String reserveSaveU(@ModelAttribute("_table") @Valid TableRequest request, BindingResult bindingResult, @PathVariable Integer cafeId, @PathVariable Integer tableId, SessionStatus status, Model model) {
+	  if(bindingResult.hasErrors())return reserveU(cafeId, tableId, model);
+	  TableRequest request1 = service.findOne(tableId);
+	  request1.setUser(request.getUser());
+	  request1.setUserPhone(request.getUserPhone());
+	  service.reserve(request1);
 	status.setComplete();
     return "redirect:/cafe/{cafeId}/tables";
   } 

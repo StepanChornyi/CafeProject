@@ -2,9 +2,12 @@ package ua.controller;
 
 import java.security.Principal;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ua.model.request.CafeRequest;
+import ua.model.request.TableRequest;
 import ua.service.CafeService;
 
 @Controller
@@ -41,7 +45,8 @@ private final CafeService service;
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("addcafe") CafeRequest request, SessionStatus status,Principal principal) {
+	public String save(@ModelAttribute("addcafe") @Valid CafeRequest request,BindingResult br, SessionStatus status,Principal principal, Model model) {
+		if(br.hasErrors())return showFrom(model);
 		service.save(request,principal);
 		return cancel(status);
 	}

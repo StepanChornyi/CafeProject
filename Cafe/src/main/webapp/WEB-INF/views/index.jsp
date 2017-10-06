@@ -28,7 +28,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<table class="table table-bordered">
+				<table class="table table-bordered table-hover text-center">
 					<tr>
 						<th class="text-center">Name</th>
 						<th class="text-center">Type</th>

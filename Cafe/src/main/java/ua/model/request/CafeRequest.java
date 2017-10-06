@@ -3,6 +3,10 @@ package ua.model.request;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 import ua.entity.OpenClose;
 
 public class CafeRequest {
@@ -10,21 +14,29 @@ public class CafeRequest {
 	private Integer id;
 
 	private BigDecimal rate;
-
+	
+	@Pattern(regexp = "^([A-Z][a-z]+)?$", message = "the name must start with a capital letter")
+	@NotBlank(message = "this field is required")
 	private String name;
+	
+	
 
 	private String photoUrl;
 
 	private int version;
 
+	@NotBlank(message = "this field is required")
 	private String address;
 
 	private String fullDescription;
 	
+	@NotBlank(message = "this field is required")
 	private String shortDescription;
 
 	private String type;
 
+	@Pattern(regexp = "^(\\+380[0-9]{9})?$", message = "value must +380XXXXXXXXX")
+	@NotBlank(message = "this field is required")
 	private String phone;
 
 	private String email;
