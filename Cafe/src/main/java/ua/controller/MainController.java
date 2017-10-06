@@ -4,6 +4,8 @@ package ua.controller;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,14 +53,14 @@ private final MealService mealService;
 	}
 	
 	@GetMapping("/cafe")
-	public String cafe(Model model) {
-		model.addAttribute("cafes", service.findAllCafeView());
+	public String cafe(Model model, @PageableDefault Pageable pageable) {
+		model.addAttribute("cafes", service.findAllCafeView(pageable));
 		return "cafe";
 	}
 	
 	@GetMapping("/meal")
-	public String meal(Model model) {
-		model.addAttribute("meals", mealService.findAllMeals());
+	public String meal(Model model, @PageableDefault Pageable pageable) {
+		model.addAttribute("meals", mealService.findAllMeals(pageable));
 		return "allmeals";
 	}
 	

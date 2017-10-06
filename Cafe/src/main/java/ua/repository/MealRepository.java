@@ -2,6 +2,8 @@ package ua.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -40,4 +42,7 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
 	
 	@Query("SELECT new ua.model.view.MealView(m.id, m.title, m.description, m.price, m.photoUrl, m.version, c.name, m.weight,cafe.name) FROM Meal m JOIN m.cuisine c LEFT JOIN m.cafe cafe LEFT JOIN cafe.user u")
 	List<MealView> findAllMeals();
+	
+	@Query(value = "SELECT new ua.model.view.MealView(m.id, m.title, m.description, m.price, m.photoUrl, m.version, c.name, m.weight,cafe.name) FROM Meal m JOIN m.cuisine c LEFT JOIN m.cafe cafe LEFT JOIN cafe.user u", countQuery="SELECT count(m.id) FROM Meal m")
+	Page<MealView> findAllMealsPage(Pageable pageable);
 }

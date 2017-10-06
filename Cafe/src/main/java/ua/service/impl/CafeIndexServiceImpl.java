@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.entity.Meal;
@@ -42,8 +44,8 @@ public class CafeIndexServiceImpl implements CafeIndexService {
 	}
 
 	@Override
-	public List<CafeIndexView> findAllCafeView() {
-		return repository.findAllCafes();
+	public Page<CafeIndexView> findAllCafeView(Pageable pageable) {
+		return repository.findAllCafes(pageable);
 	}
 	
 	

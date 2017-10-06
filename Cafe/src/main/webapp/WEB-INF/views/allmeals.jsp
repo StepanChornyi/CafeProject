@@ -24,7 +24,7 @@
 						<th class="text-center">Price</th>
 						<th class="text-center">Weight</th>
 					</tr>
-					<c:forEach var="meal" items="${meals}">
+					<c:forEach var="meal" items="${meals.content}">
 						<tr>
 							<td>${meal.title}</td>
 							<td><a href="/meal/${meal.cafe}">${meal.cafe}</a></td>
@@ -33,6 +33,11 @@
 						</tr>
 					</c:forEach>
 				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 text-center">
+				<custom:pageable page="${meals}"/>
 			</div>
 		</div>
 	</div>

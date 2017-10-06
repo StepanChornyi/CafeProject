@@ -66,7 +66,7 @@
 			</div>
 		</div>
 		
-		<a href="/cafe/${cafe.id}/tables" class="btn btn-sm btn-outline-danger">Reservation</a
+		<a href="/cafe/${cafe.id}/tables" class="btn btn-sm btn-outline-danger">Reservation</a>
 		<div class="row">		
 			<div class="col-5">
 		<form:form action="/cafedesc/${cafe.id}/comment" method="POST" modelAttribute="comment">
