@@ -1,5 +1,9 @@
 package ua.model.request;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 import ua.entity.Cafe;
 
 public class TableRequest {
@@ -7,12 +11,14 @@ public class TableRequest {
 	
 	private Integer id;
 	
+	
 	private Integer countOfPeople;
+	
 	
 	private Integer tableNumber;
 	
 	private boolean isFree;
-	
+		
 	private String user;
 	
 	private String userPhone;

@@ -1,8 +1,11 @@
 package ua.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,8 +47,9 @@ public class ProfileTableController {
   }
   
   @PostMapping("/profile/cafe/addtable/{cafeId}")
-  public String save(@ModelAttribute("_table") TableRequest request,  SessionStatus status, @PathVariable Integer cafeId) {
-    service.saveNew(request, cafeId);
+  public String save(@ModelAttribute("_table") @Valid TableRequest request,BindingResult br, Model model, SessionStatus status, @PathVariable Integer cafeId) {
+	  if(br.hasErrors())return show(model, cafeId);
+	  service.saveNew(request, cafeId);
     return cancel(status);
   }
   
@@ -70,8 +74,9 @@ public class ProfileTableController {
   } 
   
   @PostMapping("/profile/cafe/addtable/{cafeId}/reserve/{tableId}")
-  public String reserveSave(@ModelAttribute("_table") TableRequest request, @PathVariable Integer tableId, Model model, SessionStatus status) {
-	service.reserve(request);
+  public String reserveSave(@PathVariable Integer cafeId, @ModelAttribute("_table") @Valid TableRequest request, @PathVariable Integer tableId, Model model, SessionStatus status, BindingResult br) {
+	  if(br.hasErrors())return reserve(cafeId, tableId,model);
+	  service.reserve(request);
     return cancel(status);
   } 
   
@@ -89,8 +94,9 @@ public class ProfileTableController {
   } 
   
   @PostMapping("/cafe/{cafeId}/reserve/{tableId}")
-  public String reserveSaveU(@ModelAttribute("_table") TableRequest request, @PathVariable Integer tableId, Model model, SessionStatus status) {
-	service.reserve(request);
+  public String reserveSaveU(@PathVariable Integer cafeId, @ModelAttribute("_table") @Valid TableRequest request, @PathVariable Integer tableId, BindingResult br, Model model, SessionStatus status) {
+	  if(br.hasErrors())return reserveU(cafeId, tableId,model);
+	  service.reserve(request);
 	status.setComplete();
     return "redirect:/cafe/{cafeId}/tables";
   } 

@@ -22,12 +22,14 @@
             <label class="col-2 col-form-label" for="user">Name :</label>
             <div class="col-10">
               <form:input class="form-control" id="user" path="user" />
+              <form:errors path="user"/>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-2 col-form-label" for="userPhone">Phone :</label>
             <div class="col-10">
               <form:input class="form-control" id="userPhone" path="userPhone" />
+              <form:errors path="userPhone"/>
             </div>
           </div>
           <div class="form-group row">
