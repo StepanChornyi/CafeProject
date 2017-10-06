@@ -7,17 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import ua.service.CafeIndexService;
+import ua.service.CafeService;
+import ua.service.MealService;
 
 @Controller
 public class MainController {
 
 private final CafeIndexService service;
+private final CafeService cafeService;
+private final MealService mealService;
 	
 	@Autowired
-	public MainController(CafeIndexService service) {
+	public MainController(CafeIndexService service, MealService mealService, CafeService cafeService) {
 		this.service = service;
+		this.mealService = mealService;
+		this.cafeService = cafeService;
 	}
 	
 	@GetMapping("/")
@@ -47,5 +54,16 @@ private final CafeIndexService service;
 	public String cafe(Model model) {
 		model.addAttribute("cafes", service.findAllCafeView());
 		return "cafe";
+	}
+	
+	@GetMapping("/meal")
+	public String meal(Model model) {
+		model.addAttribute("meals", mealService.findAllMeals());
+		return "allmeals";
+	}
+	
+	@GetMapping("/meal/{cafe}")
+	public String mealc(Model model, @PathVariable String cafe) {
+		return "redirect:/cafedesc/"+cafeService.findByName(cafe).getId();
 	}
 }

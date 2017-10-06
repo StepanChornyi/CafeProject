@@ -19,17 +19,17 @@
 			<div class="col-12">
 				<table class="table table-bordered">
 					<tr>
-						<th class="text-center">Name</th>
-						<th class="text-center">Address</th>
-						<th class="text-center">Short description</th>
-						<th class="text-center">Type</th>
+						<th class="text-center">Title</th>
+						<th class="text-center">Cafe</th>
+						<th class="text-center">Price</th>
+						<th class="text-center">Weight</th>
 					</tr>
-					<c:forEach var="cafe" items="${cafes}">
+					<c:forEach var="meal" items="${meals}">
 						<tr>
-							<td><a href="/cafedesc/${cafe.id}">${cafe.name}</a></td>
-							<td>${cafe.address}</td>
-							<td>${cafe.shortDescription}</td>
-							<td>${cafe.type}</td>
+							<td>${meal.title}</td>
+							<td><a href="/meal/${meal.cafe}">${meal.cafe}</a></td>
+							<td>${meal.price}</td>
+							<td>${meal.weight}</td>
 						</tr>
 					</c:forEach>
 				</table>

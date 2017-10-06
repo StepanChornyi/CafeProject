@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ua.service.MealService;
 
 @Controller
-@RequestMapping("/meal")
+@RequestMapping("/profile/meal")
 //@SessionAttributes("meal")
 public class MealController {
 
@@ -34,6 +34,6 @@ public class MealController {
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id) {
 		service.delete(id);
-		return "redirect:/meal";
+		return "redirect:/profile/meal";
 	}
 }

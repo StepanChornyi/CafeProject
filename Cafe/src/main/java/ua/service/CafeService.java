@@ -40,4 +40,6 @@ public interface CafeService {
 	void saveComment(CommentRequest request);
 	
 	CafeView findOneCafeView(Integer id);
+	
+	Cafe findByName(String name);
 }

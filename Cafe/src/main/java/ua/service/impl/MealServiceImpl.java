@@ -87,6 +87,11 @@ public class MealServiceImpl implements MealService{
 	public List<String> findAllCafeByUserEmail(String email) {
 		return repository.findAllCafeByUserEmail(email);
 	}
+
+	@Override
+	public List<MealView> findAllMeals() {
+		return repository.findAllMeals();
+	}
 	
 	
 

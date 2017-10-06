@@ -181,6 +181,13 @@ public class CafeServiceImpl   implements CafeService {
 		CafeView cafe = repository.findOneViews(id);
 		return cafe;
 	}
+
+
+
+	@Override
+	public Cafe findByName(String name) {
+		return repository.findByName(name);
+	}
 	
 	
 

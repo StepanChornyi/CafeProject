@@ -22,6 +22,6 @@ public interface MealService {
 	
 	List<String> findAllCafeByUserEmail(String email);
 	
-	
+	List<MealView> findAllMeals();
 		
 }

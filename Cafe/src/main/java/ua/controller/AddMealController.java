@@ -48,7 +48,7 @@ private final MealService service;
 	@GetMapping("/cancel")
 	public String cancel(SessionStatus status) {
 		status.setComplete();
-		return "redirect:/meal";
+		return "redirect:/profile/meal";
 	}
 	
 	@GetMapping
