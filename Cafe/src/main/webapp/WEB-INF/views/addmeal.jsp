@@ -19,42 +19,49 @@
 						<label class="col-2 col-form-label" for="cafe">Cafe:</label>
 						<div class="col-10">
 							<form:select path="cafe" items="${cafes}" class="form-control"/>
+							 <form:errors path="cafe" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="title">Title:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="title" path="title"/>
+							 <form:errors path="title" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="description">Description:</label>
 						<div class="col-10">
 							<form:textarea class="form-control" id="description" path="description" rows="5"/>
+							 <form:errors path="description" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="price">Price:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="price" path="price"/>
+							 <form:errors path="price" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="weight">Weight:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="weight" path="weight"/>
+							 <form:errors path="price" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="cuisine">Cuisine:</label>
 						<div class="col-10">
 							<form:select path="cuisine" items="${cuisines}" class="form-control"/>
+							 <form:errors path="cuisine" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="ingredients">Ingredients:</label>
 						<div class="col-10">
 							<form:select path="ingredients" items="${ingredients}" class="form-control" multiple="multiple"/>
+							 <form:errors path="ingredients" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">

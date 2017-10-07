@@ -22,12 +22,14 @@
 						<label class="col-2 col-form-label" for="name">Name:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="name" path="name"/>
+							 <form:errors path="name" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="address">Address:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="address" path="address"/>
+							 <form:errors path="address" style="color:red;"/>
 						</div>
 					</div>
 					 <div class="form-group row">
@@ -35,6 +37,7 @@
 						<div class="col-10">
 							<form:textarea class="form-control" id="fullDescription"
 								path="fullDescription" rows="5"></form:textarea>
+								 <form:errors path="fullDescription" style="color:red;"/>
 						</div>
 					</div> 
 					 <div class="form-group row">
@@ -42,12 +45,14 @@
 						<div class="col-10">
 							<form:textarea class="form-control" id="shortDescription"
 								path="shortDescription" rows="5"></form:textarea>
+								 <form:errors path="shortDescription" style="color:red;"/>
 						</div>
 					</div> 
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="type">Type:</label>
 						<div class="col-10">
 							<form:select class="form-control"  items="${types}" path="type" />
+							<form:errors path="type" style="color:red;"/>
 						</div>
 					</div>
 					
@@ -56,6 +61,7 @@
 						<label class="col-2 col-form-label" for="phone">Phone:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="phone" path="phone"/>
+							<form:errors path="phone" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">

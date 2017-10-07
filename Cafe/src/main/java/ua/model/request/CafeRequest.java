@@ -13,7 +13,7 @@ public class CafeRequest {
 
 	private Integer id;
 
-	private BigDecimal rate;
+	private BigDecimal rate = new BigDecimal(5);
 	
 	@Pattern(regexp = "^([A-Z][a-z]+)?$", message = "the name must start with a capital letter")
 	@NotBlank(message = "this field is required")

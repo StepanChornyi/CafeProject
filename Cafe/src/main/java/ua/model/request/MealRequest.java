@@ -3,6 +3,13 @@ package ua.model.request;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import ua.entity.Cafe;
 import ua.entity.Cuisine;
 import ua.entity.Ingredient;
@@ -11,10 +18,16 @@ public class MealRequest {
 
 	private Integer id;
 	
+	@Pattern(regexp = "^([A-Z][a-z]+)?$", message = "value must start with a capital letter")
+	@NotBlank(message = "this field is required")
 	private String title;
 	
 	private String description;
 	
+	@Max(value = 10000, message = "must be less than or equal to 10000")
+	@Min(value = 0, message = "must be greater than or equal to 0")
+	@Pattern(regexp = "^([0-9]+([,.][0-9]{1,2})?)?$", message = "this value is not valid")
+	@NotBlank(message = "this field is required")
 	private String price;
 	
 	private String photoUrl;
@@ -23,8 +36,13 @@ public class MealRequest {
 	
 	private Cuisine cuisine;
 	
+	@Max(value = 1000, message = "must be less than or equal to 1000")
+	@Min(value = 10, message = "must be greater than or equal to 10")
+	@Pattern(regexp = "^(\\d+)?$", message = "this value is not valid")
+	@NotBlank(message = "this field is required")
 	private String weight;
 	
+	@NotEmpty(message = "may not be empty")
 	private List<Ingredient> ingredients=new ArrayList<>();
 	
 	private Cafe cafe;
