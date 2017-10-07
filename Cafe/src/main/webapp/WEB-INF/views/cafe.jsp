@@ -73,7 +73,7 @@
 					<div class="form-group">
 						<button type="submit" class="btn btn-success">Search</button>
 					</div>
-					<div class="row">
+					 <div class="row">
 					<div class="col-6">
 						<button class="dropdown-toggle btn btn-outline-info btn-sm"
 							type="button" data-toggle="dropdown">Sort</button>
@@ -87,7 +87,7 @@
 					<div class="col-2 ">
 						<custom:size posibleSizes="1,2,5,10" size="${cafes.size}" />
 					</div>
-				</div>
+				</div> 
 				</form:form>
 			</div>
 			<div class="col-8">

@@ -41,7 +41,7 @@
 							</td>
 							<td class="text-center">
 								<a href="/addmeal/update/${meal.id}" class="btn btn-outline-warning btn-sm">Update</a>
-								<a href="/meal/delete/${meal.id}" class="btn btn-outline-danger btn-sm">Delete</a>
+								<!-- <a href="/meal/delete/${meal.id}" class="btn btn-outline-danger btn-sm">Delete</a> -->
 							</td>
 						</tr>
 					</c:forEach>

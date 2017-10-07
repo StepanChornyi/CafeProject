@@ -19,18 +19,24 @@
 						<label class="col-2 col-form-label" for="email">Email:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="email" path="email"/>
+							<form:errors path="email" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="password">Password:</label>
 						<div class="col-10">
 							<form:password class="form-control" id="password" path="password"/>
+							<form:errors path="password" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="repeatPassword">Repeat password:</label>
 						<div class="col-10">
 							<form:password class="form-control" id="repeatPassword" path="repeatPassword"/>
+							<form:errors path="repeatPassword" style="color:red;"/>
+							<c:if test="${isWrongPassword}">
+								<span style="color:red;">wrong repeat password</span>
+							</c:if>
 						</div>
 					</div>
 					<div class="form-group row">

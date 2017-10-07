@@ -69,11 +69,11 @@
 							<td>${table.userPhone}</td>
 
 
-							<td class="text-center"><a
+							<!--  <td class="text-center"><a
 								href="/profile/cafe/addtable/${cafeId}/update/${table.id}"
 								class="btn btn-outline-warning btn-sm">Update</a> <a
 								href="/profile/cafe/addtable/${cafeId}/delete/${table.id}"
-								class="btn btn-outline-danger btn-sm">Delete</a> 
+								class="btn btn-outline-danger btn-sm">Delete</a> -->
 								<c:if
 									test="${table.getIsFree().equals(true)}">
 									<a href="/profile/cafe/addtable/${cafeId}/reserve/${table.id}"

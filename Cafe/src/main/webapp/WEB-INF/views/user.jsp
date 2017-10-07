@@ -81,9 +81,9 @@
 							<td>${user.birthday} ${user.email}</td>
 							<td class="text-center"><a
 								href="/admin/user/update/${user.id}"
-								class="btn btn-outline-warning btn-sm">Update</a> <a
+								class="btn btn-outline-warning btn-sm">Update</a><!--   <a
 								href="/admin/user/delete/${user.id}"
-								class="btn btn-outline-danger btn-sm">Delete</a></td>
+								class="btn btn-outline-danger btn-sm">Delete</a></td>-->
 						</tr>
 					</c:forEach>
 				</table>

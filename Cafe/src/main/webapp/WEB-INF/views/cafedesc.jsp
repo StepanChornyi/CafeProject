@@ -115,6 +115,7 @@
             <label class="col-2 col-form-label" for="user">User:</label>
             <div class="col-10">
               <form:input class="form-control" id="user" path="user" />
+              <form:errors path="user" style="color:red;"/>
             </div>
           </div>
           <div class="form-group row">
@@ -122,12 +123,14 @@
             <div class="col-10">
               <form:textarea class="form-control" id="comment" path="comment"
                 rows="5"></form:textarea>
+                <form:errors path="comment" style="color:red;"/>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-2 col-form-label" for="rate">Rate:</label>
             <div class="col-10">
               <form:input class="form-control" id="rate" path="rate" />
+              <form:errors path="rate" style="color:red;"/>
             </div>
           </div>
           <div class="form-group row">

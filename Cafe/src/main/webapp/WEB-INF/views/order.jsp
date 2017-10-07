@@ -51,9 +51,9 @@
 								href="/profile/cafe/${cafeId}/paid/${order.id}"
 								class="btn btn-outline-success btn-sm">Paid</a> 
 								</c:if>
-							<a
+							<!-- <a
 								href="/profile/cafe/${cafeId}/delete/${order.id}"
-								class="btn btn-outline-danger btn-sm">Delete</a></td>
+								class="btn btn-outline-danger btn-sm">Delete</a></td> -->
 						</tr>
 					</c:forEach>
 				</table>

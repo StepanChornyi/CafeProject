@@ -42,7 +42,7 @@
 							<td>${ingredient.name}</td>
 							<td class="text-center">
 								<a href="/admin/ingredient/update/${ingredient.id}" class="btn btn-outline-warning btn-sm">Update</a>
-								<a href="/admin/ingredient/delete/${ingredient.id}" class="btn btn-outline-danger btn-sm">Delete</a>
+								<!-- <a href="/admin/ingredient/delete/${ingredient.id}" class="btn btn-outline-danger btn-sm">Delete</a> -->
 							</td>
 						</tr>
 					</c:forEach>
