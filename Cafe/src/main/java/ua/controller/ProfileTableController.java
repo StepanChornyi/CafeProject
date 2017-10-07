@@ -58,10 +58,10 @@ public class ProfileTableController {
 	  TableRequest table = getForm();
 	  if(request.getId()!=null){
 	  table = service.findOne(request.getId());}
-	  table.setCountOfPeople(request.getCountOfPeople());
-	  table.setTableNumber(request.getNumber());
+	  table.setCountOfPeople(Integer.valueOf(request.getCountOfPeople()));
+	  table.setTableNumber(Integer.valueOf(request.getTableNumber()));
 	  service.saveNew(table, cafeId);
-    return cancel(status);
+    return "redirect:/profile/cafe/addtable/{cafeId}";
   }
   
   
@@ -69,9 +69,9 @@ public class ProfileTableController {
   public String update(Model model, @PathVariable Integer cafeId,@PathVariable Integer tableId) {
     AddTableRequest request = getAddForm();
     TableRequest table = service.findOne(tableId);
-    request.setId(table.getId());
-    request.setCountOfPeople(table.getCountOfPeople());
-    request.setNumber(table.getTableNumber());
+    request.setId(tableId);
+    request.setCountOfPeople(table.getCountOfPeople().toString());
+    request.setTableNumber(table.getTableNumber().toString());
 	model.addAttribute("addtable", request);
     return show(model, cafeId);
   } 

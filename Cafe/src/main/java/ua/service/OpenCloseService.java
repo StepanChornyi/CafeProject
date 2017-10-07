@@ -1,7 +1,16 @@
 package ua.service;
 
-import ua.entity.OpenClose;
+import java.util.List;
 
-public interface OpenCloseService extends CrudService<OpenClose,Integer>{
+import ua.entity.OpenClose;
+import ua.model.request.OpenCloseRequest;
+
+public interface OpenCloseService{
+	
+	OpenCloseRequest findOneRequest(Integer id);
+	
+	void saveRequest(OpenCloseRequest request);
+	
+	List<OpenClose> findAll();
 
 }

@@ -15,4 +15,10 @@ public interface OpenCloseRepository extends JpaRepository<OpenClose, Integer>{
 	
 	@Query("SELECT DISTINCT oc FROM OpenClose oc WHERE oc.time=?1")
 	OpenClose findByTime(LocalTime time);
+	
+	@Query("SELECT time FROM OpenClose time WHERE time.time=?1")
+	OpenClose findOneByTime(LocalTime time);
+	
+	@Query("SELECT time FROM OpenClose time WHERE time.id=?1")
+	OpenClose findOneById(Integer id);
 }

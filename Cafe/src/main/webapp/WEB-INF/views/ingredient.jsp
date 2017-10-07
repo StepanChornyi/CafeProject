@@ -19,6 +19,7 @@
 						<label class="col-2 col-form-label" for="name">Name:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="name" path="name"/>
+							<form:errors path="name" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">

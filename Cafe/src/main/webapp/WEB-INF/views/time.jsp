@@ -19,6 +19,7 @@
 						<label class="col-2 col-form-label" for="time">Hour:</label>
 						<div class="col-5">
 							<form:input class="form-control" id="time" path="time"/>
+							<form:errors path="time" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -42,7 +43,6 @@
 							<td>${time.time}</td>
 							<td class="text-center">
 								<a href="/admin/time/update/${time.id}" class="btn btn-outline-warning btn-sm">Update</a>
-								<a href="/admin/time/delete/${time.id}" class="btn btn-outline-danger btn-sm">Delete</a>
 							</td>
 						</tr>
 					</c:forEach>

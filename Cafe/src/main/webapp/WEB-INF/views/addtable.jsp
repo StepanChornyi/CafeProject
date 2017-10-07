@@ -20,12 +20,12 @@
 				<form:form action="/profile/cafe/addtable/${cafeId}" method="POST"
 					modelAttribute="addtable">
 					<div class="form-group row">
-						<label class="col-2 col-form-label" for="number">Table
+						<label class="col-2 col-form-label" for="tableNumber">Table
 							number :</label>
 						<div class="col-10">
-							<form:input class="form-control" id="number"
-								path="number" />
-							<form:errors path="number" style="color:red;"/>
+							<form:input class="form-control" id="tableNumber"
+								path="tableNumber" />
+							<form:errors path="tableNumber" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">

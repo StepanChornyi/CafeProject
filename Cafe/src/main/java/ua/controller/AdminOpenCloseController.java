@@ -1,9 +1,12 @@
 package ua.controller;
 
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ua.entity.OpenClose;
+import ua.model.request.OpenCloseRequest;
 import ua.service.OpenCloseService;
 
 @Controller
@@ -38,11 +42,6 @@ private final OpenCloseService service;
 		return new OpenClose();
 	}
 	
-	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable Integer id) {
-		service.delete(id);
-		return "redirect:/admin/time";
-	}
 	
 	@GetMapping("cancel")
 	public String cancel(SessionStatus status){
@@ -52,13 +51,14 @@ private final OpenCloseService service;
 	
 	@GetMapping("/update/{id}")
 	public String update(@PathVariable Integer id,Model model){
-		model.addAttribute("time",service.findOne(id));
+		model.addAttribute("time",service.findOneRequest(id));
 		return show(model);
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("time") OpenClose openClose,SessionStatus status) {
-		service.save(openClose);
+	public String save(@ModelAttribute("time") @Valid OpenCloseRequest request, BindingResult br, SessionStatus status, Model model) {
+		if(br.hasErrors())return show(model);
+		service.saveRequest(request);
 		return cancel(status);
 	}
 }
