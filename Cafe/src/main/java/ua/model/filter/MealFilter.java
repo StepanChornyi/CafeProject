@@ -18,7 +18,6 @@ public class MealFilter {
 	
 	private String search = "";
 	
-	private String user = "";
 
 	public String getMinPrice() {
 		return minPrice;
