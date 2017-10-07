@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import ua.entity.Meal;
 import ua.entity.Table;
 
@@ -17,6 +19,7 @@ public class OrderRequest {
 	
 	private Table table;
 	
+	@NotEmpty(message = "may not be empty")
 	private List<Meal> meals = new ArrayList<>();
 
 	public Integer getId() {

@@ -1,8 +1,11 @@
 package ua.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,8 +56,10 @@ public class ProfileOrderController {
   }
   
   @PostMapping("/addorder")
-  public String saveOrderShow(@ModelAttribute("order") OrderRequest request) {
+  public String saveOrderShow(@ModelAttribute("order") @Valid OrderRequest request, BindingResult br, Model model, @PathVariable Integer cafeId, SessionStatus status) {
+	  if(br.hasErrors()) return addOrderShow(model, cafeId);
 	service.saveNew(request);
+	status.setComplete();
     return "redirect:/profile/cafe/{cafeId}/orders";
   }
   

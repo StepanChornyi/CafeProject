@@ -30,6 +30,7 @@
 						<label class="col-2 col-form-label" for="meals">Meals:</label>
 						<div class="col-10">
 							<form:select path="meals" items="${meals}" class="form-control" multiple="multiple"/>
+							<form:errors path="meals" style="color:red;"/>
 						</div>
 					</div>
 					<div class="form-group row">
